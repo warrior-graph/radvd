@@ -55,9 +55,11 @@ endif
 
 AM_YFLAGS = -d
 
-noinst_LIBRARIES = libradvd-parser.a
+noinst_LIBRARIES = \
+	libradvd-parser.a
 
 radvd_LDADD = \
+	$(CJSON_LIB) \
 	libradvd-parser.a \
 	@CONDITIONAL_SOURCES@
 
@@ -245,6 +247,7 @@ CLEANFILES = \
 
 radvd_DEPENDENCIES = \
 	@CONDITIONAL_SOURCES@ \
+	$(CJSON_LIB) \
 	libradvd-parser.a
 
 ### make check ###
@@ -278,6 +281,7 @@ check_all_CFLAGS = \
 check_all_LDADD = \
 	@CHECK_LIBS@ \
 	@CONDITIONAL_SOURCES@ \
+	$(CJSON_LIB) \
 	libradvd-parser.a
 
 DISTCHECK_CONFIGURE_FLAGS = \
